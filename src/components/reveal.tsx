@@ -5,10 +5,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 type Props = PropsWithChildren<{
   className?: string;
-  /**
-   * Used for scroll-margin and can help anchor links land nicely.
-   * If provided, we apply `scroll-mt-24`.
-   */
   withScrollMargin?: boolean;
 }>;
 

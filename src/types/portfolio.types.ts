@@ -11,3 +11,8 @@ export type PortfolioProject = {
   stack: string[];
   links: PortfolioLink[];
 };
+
+export type PortfolioHighlight = {
+  label: string;
+  value: string;
+};

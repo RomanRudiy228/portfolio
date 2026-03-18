@@ -2,10 +2,17 @@ import type { PortfolioProject } from "@/types/portfolio.types";
 
 export const portfolio = {
   name: "Roman Rudiy",
-  title: "Fullstack Developer (React / Next.js / Node.js)",
+  title: "Fullstack Developer (TypeScript / React / Next.js / Node.js)",
   location: "Ternopil, Ukraine",
-  intro:
-    "I build scalable, production-ready web applications with modern frontend and backend technologies.",
+  highlights: [
+    { label: "Commercial experience", value: "~1 year" },
+    {
+      label: "Tech Stack",
+      value:
+        "TypeScript · React · Next.js · Node.js · NestJS · PostgreSQL · Supabase · Vercel",
+    },
+    { label: "Remote teamwork", value: "Outsource / Outstaff" },
+  ],
   contacts: {
     email: "roman5rudiy5@gmail.com",
     phone: "+380 96 7587 027",
@@ -14,22 +21,44 @@ export const portfolio = {
     telegramUrl: "https://t.me/rudiyroma",
   },
   interests: [
-    "CI/CD automation",
-    "Docker-based workflows",
+    "Adaptive frontend",
     "Scalable backend architecture",
+    "Docker-based workflows",
+    "CI/CD automation",
   ],
   skills: {
-    frontend: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Zustand"],
-    backend: ["Node.js", "NestJS", "REST API"],
-    database: ["PostgreSQL", "Prisma ORM", "TypeORM", "Supabase"],
-    tools: ["Git", "GitHub", "Docker", "Postman", "Vercel", "CI/CD basics"],
+    frontend: [
+      "TypeScript",
+      "React / React Native",
+      "Next.js",
+      "Tailwind CSS",
+      "Zustand",
+    ],
+    backend: ["Node.js", "NestJS", "Express", "REST API"],
+    database: ["MongoDB", "PostgreSQL", "Prisma ORM", "TypeORM", "Supabase"],
+    tools: [
+      "Git",
+      "GitHub",
+      "Docker",
+      "Postman",
+      "Vercel",
+      "CI/CD basics",
+      "Notion",
+      "Figma",
+    ],
     languages: ["English (B1-B2)", "Ukrainian"],
   },
+  categories: [
+    { key: "frontend", label: "Frontend" },
+    { key: "backend", label: "Backend" },
+    { key: "database", label: "Database" },
+    { key: "tools", label: "Tools" },
+  ],
   experience: [
     {
       title: "Full Stack Developer",
       company: "Commercial Projects (International Outstaff)",
-      period: "~7 months (incl. 2 months outstaff) · Remote",
+      period: "~1 year (incl. 2 months outstaff) · Remote",
       bullets: [
         "Developed fullstack features for production web apps using React, Next.js, TypeScript, Node.js, and NestJS.",
         "Built responsive, production-ready landing pages (React & Next.js).",
@@ -38,6 +67,13 @@ export const portfolio = {
         "Worked with PostgreSQL and collaborated with designers, developers, and foreign clients in English.",
         "Used GitHub for collaboration and worked within CI/CD workflows; deployed apps to Vercel.",
       ],
+    },
+  ],
+  education: [
+    {
+      title: "Bachelor — Western Ukrainian National University",
+      period: "Sep 2022 — Jul 2026",
+      location: "Ternopil, Ukraine",
     },
   ],
   projects: [
@@ -51,7 +87,7 @@ export const portfolio = {
         "Contributed to core features using React, TypeScript, Tailwind CSS, Node.js.",
         "Collaborated with backend services using NestJS and PostgreSQL.",
       ],
-      stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "NestJS", "PostgreSQL"],
+      stack: ["React", "TypeScript", "Tailwind CSS", "NodeJS", "NestJS", "PostgreSQL"],
       links: [{ label: "Live", href: "https://www.alytic.sa/" }],
     },
     {
