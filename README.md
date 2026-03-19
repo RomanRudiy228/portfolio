@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Roman Rudiy Portfolio Website
 
-## Getting Started
+This is the source code for my personal **portfolio website**, built as a modern, responsive, single-page application (SPA) to showcase my projects, skills, and contact information.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠 Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Frontend:** Next.js, React, TypeScript  
+- **Styling:** Tailwind CSS, including dark mode support and modern UI patterns  
+- **Icons & UI Components:** Lucide React icons, custom components for cards, tags, and sections  
+- **Deployment:** Vercel  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔍 Architecture & Features
 
-## Learn More
+- **Single-Page Application (SPA):**  
+  Smooth scroll navigation to sections (`Home`, `Skills`, `Projects`, `Contact`) using `IntersectionObserver` to track active sections and highlight the current menu item.  
+- **Sticky Header:**  
+  Header stays visible while scrolling, with blur and semi-transparent background for a modern “glassmorphism” effect.  
+- **Responsive Layout:**  
+  Mobile-first design with flexible grids for skills and projects, ensuring readability on all devices.  
+- **Project Cards:**  
+  Interactive cards with hover effects, transparent backgrounds, and stack/technologies displayed using reusable components.  
+- **Smooth Scrolling:**  
+  Custom scroll behavior ensures that section headings are visible below the sticky header when navigating from the menu.  
+- **Dark Mode:**  
+  Full support for light/dark themes using Tailwind’s `dark:` variants.  
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💡 Development Approach
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Component-based architecture:**  
+   - Reusable components for sections, cards, tags, and navigation.  
+   - Minimal duplication and easy to maintain/update.  
 
-## Deploy on Vercel
+2. **Modern UI effects:**  
+   - Glassmorphism overlays, hover animations, subtle shadows and scale effects on interactive elements.  
+   - Smooth transitions for hover states and active navigation highlighting.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **State management:**  
+   - React hooks (`useState`, `useEffect`, `useMemo`) for handling active section tracking.  
+   - IntersectionObserver API for efficient detection of the currently visible section.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. **Accessibility & Usability:**  
+   - Semantic HTML elements (`<header>`, `<nav>`, `<section>`, `<ul>`).  
+   - Keyboard-friendly navigation links and focus styles.  
+
+5. **Performance:**  
+   - Lazy-loaded images and assets where necessary.  
+   - Minimalistic design to keep site lightweight and fast.  
+
+---
+
+## ⚡ Highlights
+
+- Fully interactive SPA experience with smooth section scrolling  
+- Dynamic highlighting of active sections in the navigation menu  
+- Reusable, modular React components for cards, tags, and sections  
+- Dark mode with high contrast for readability  
+- Responsive design across all devices  
+
+---
+
+## 📦 Deployment
+
+The site is deployed on **Vercel** for fast, globally distributed performance. Any changes pushed to the repository are automatically reflected in the live site.
+
