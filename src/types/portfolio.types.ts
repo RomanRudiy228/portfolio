@@ -10,6 +10,9 @@ export type PortfolioProject = {
   highlights: string[];
   stack: string[];
   links: PortfolioLink[];
+  image: string;
+  year?: string;
+  type?: string;
 };
 
 export type PortfolioHighlight = {

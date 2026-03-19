@@ -19,7 +19,7 @@ export function ProjectsSection() {
           </div>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-4">
+        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {portfolio.projects.map((p) => (
             <Reveal key={p.name}>
               <ProjectCard project={p} />

@@ -21,6 +21,7 @@ export const portfolio = {
     telegramUrl: "https://t.me/rudiyroma",
   },
   interests: [
+    "Clean code",
     "Adaptive frontend",
     "Scalable backend architecture",
     "Docker-based workflows",
@@ -57,7 +58,7 @@ export const portfolio = {
   experience: [
     {
       title: "Full Stack Developer",
-      company: "Commercial Projects (International Outstaff)",
+      company: "Commercial Projects",
       period: "~1 year (incl. 2 months outstaff) · Remote",
       bullets: [
         "Developed fullstack features for production web apps using React, Next.js, TypeScript, Node.js, and NestJS.",
@@ -76,10 +77,19 @@ export const portfolio = {
       location: "Ternopil, Ukraine",
     },
   ],
+  courses: [
+    "Cisco JavaScript Course",
+    "Front-end React Web Development Course",
+    "Back-end Course",
+    "Documentations and real projects",
+  ],
   projects: [
     {
       name: "Alytic",
       role: "Full Stack Developer",
+      image: "/images/alytic.png",
+      year: "2025",
+      type: "Live",
       summary:
         "Fullstack SaaS platform with responsive marketing pages and core app features.",
       highlights: [
@@ -93,6 +103,9 @@ export const portfolio = {
     {
       name: "Tornix",
       role: "Full Stack Developer (Outstaff)",
+      image: "/images/tornix.png",
+      year: "2025 - 2026",
+      type: "Live",
       summary: "AI/marketing platform focused on performance, auth, and data flows.",
       highlights: [
         "Implemented responsive marketing landing pages using Next.js.",

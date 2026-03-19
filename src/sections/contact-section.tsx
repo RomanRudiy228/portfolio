@@ -19,7 +19,7 @@ export function ContactSection() {
 
             <a
               href={`mailto:${portfolio.contacts.email}`}
-              className="text-sm text-zinc-800 transition hover:underline dark:text-zinc-200"
+              className="text-base text-zinc-800 transition hover:underline dark:text-zinc-200"
             >
               {portfolio.contacts.email}
             </a>
@@ -32,7 +32,7 @@ export function ContactSection() {
 
             <a
               href={`tel:${portfolio.contacts.phone}`}
-              className="text-sm text-zinc-800 transition hover:underline dark:text-zinc-200"
+              className="text-base text-zinc-800 transition hover:underline dark:text-zinc-200"
             >
               {portfolio.contacts.phone}
             </a>

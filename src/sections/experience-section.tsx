@@ -23,7 +23,7 @@ export function ExperienceSection() {
                   <p className="font-semibold text-zinc-950 dark:text-white">{e.title}</p>
                   <p className="text-zinc-600 dark:text-zinc-400">{e.company}</p>
                 </div>
-                <div className="pt-1 text-sm sm:pt-0">
+                <div className="pt-1 sm:pt-0">
                   <Tag>{e.period}</Tag>
                 </div>
               </div>

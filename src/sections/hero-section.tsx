@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { portfolio } from "@/const/portfolio.const";
 import { Reveal } from "@/components/reveal";
-import { Briefcase, Cpu, Globe2, Github, Linkedin, MapPin, Send } from "lucide-react";
+import { Briefcase, Cpu, Globe2, Github, Linkedin, MapPin, Send, Download } from "lucide-react";
 
 export function HeroSection() {
   return (
@@ -14,9 +14,22 @@ export function HeroSection() {
             <MapPin className="h-4 w-4" aria-hidden="true" />
             {portfolio.location}
           </p>
-          <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-            {portfolio.name}
-          </h1>
+
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              {portfolio.name}
+            </h1>
+
+            <a
+              href="/CV.pdf"
+              download
+              className="flex items-center gap-1 rounded-2xl bg-zinc-950 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+            >
+              <Download className="h-4 w-4" />
+              Download CV
+            </a>
+          </div>
+
           <p className="text-base text-pretty text-zinc-700 sm:text-lg dark:text-zinc-300">
             {portfolio.title}
           </p>
