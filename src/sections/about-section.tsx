@@ -12,17 +12,12 @@ export function AboutSection() {
           About
         </h2>
 
-        <p className="text-base leading-6 text-zinc-700 dark:text-zinc-300">
+        <p className="mb-6 text-base leading-6 text-zinc-700 dark:text-zinc-300">
           Hi! I&apos;m <span className="font-bold">Roman Rudiy</span>, a passionate Full
           Stack Developer with experience in JavaScript, TypeScript, React, Next.js,
           Node.js, and modern web architectures. I enjoy building scalable, maintainable,
           and user-friendly web applications that solve real-world problems.
         </p>
-        <p className="mt-4 mb-4 text-base leading-6 text-zinc-700 dark:text-zinc-300">
-          With a background in Computer Science and a strong focus on clean, maintainable
-          code, scalable architecture and REST APIs.
-        </p>
-
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-xl border border-zinc-200 p-5 transition-shadow duration-300 hover:shadow-lg dark:border-white/10">
             <h3 className="mb-3 flex items-center gap-2 text-[16px] font-semibold">

@@ -1,32 +1,25 @@
 "use client";
 
 import type { PropsWithChildren } from "react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = PropsWithChildren<{
   className?: string;
   withScrollMargin?: boolean;
+  reset?: boolean;
 }>;
 
-function prefersReducedMotion(): boolean {
-  if (typeof window === "undefined") return true;
-  return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
-}
-
-export function Reveal({ children, className, withScrollMargin }: Props) {
+export function Reveal({
+  children,
+  className = "",
+  withScrollMargin,
+  reset = false,
+}: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
-  const baseClass = useMemo(() => {
-    const scrollMargin = withScrollMargin ? "scroll-mt-24" : "";
-    return [scrollMargin, className].filter(Boolean).join(" ");
-  }, [className, withScrollMargin]);
-
   useEffect(() => {
-    if (prefersReducedMotion()) {
-      queueMicrotask(() => setIsVisible(true));
-      return;
-    }
+    if (typeof window === "undefined") return;
 
     const el = ref.current;
     if (!el) return;
@@ -36,28 +29,22 @@ export function Reveal({ children, className, withScrollMargin }: Props) {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            io.disconnect();
-            break;
+          } else if (reset) {
+            setIsVisible(false);
           }
         }
       },
-      { root: null, threshold: 0.12, rootMargin: "0px 0px -10% 0px" },
+      { threshold: 0.1 },
     );
 
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [reset]);
 
   return (
     <div
       ref={ref}
-      className={[
-        baseClass,
-        "reveal-motion transition duration-700 will-change-transform",
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0",
-      ]
-        .filter(Boolean)
-        .join(" ")}
+      className={`${withScrollMargin ? "scroll-mt-24" : ""} ${className} transform transition-all duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
     >
       {children}
     </div>

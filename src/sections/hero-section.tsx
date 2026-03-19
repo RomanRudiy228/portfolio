@@ -3,7 +3,16 @@
 import Link from "next/link";
 import { portfolio } from "@/const/portfolio.const";
 import { Reveal } from "@/components/reveal";
-import { Briefcase, Cpu, Globe2, Github, Linkedin, MapPin, Send, Download } from "lucide-react";
+import {
+  Briefcase,
+  Cpu,
+  Globe2,
+  Github,
+  Linkedin,
+  MapPin,
+  Send,
+  Download,
+} from "lucide-react";
 
 export function HeroSection() {
   return (

@@ -81,7 +81,6 @@ export const portfolio = {
     "Cisco JavaScript Course",
     "Front-end React Web Development Course",
     "Back-end Course",
-    "Documentations and real projects",
   ],
   projects: [
     {

@@ -3,9 +3,21 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
-function prefersReducedMotion(): boolean {
-  if (typeof window === "undefined") return true;
-  return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+function smoothScrollToTop(duration = 500) {
+  const start = window.scrollY;
+  const startTime = performance.now();
+
+  function scrollStep(timestamp: number) {
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    window.scrollTo(0, start * (1 - ease));
+    if (progress < 1) {
+      requestAnimationFrame(scrollStep);
+    }
+  }
+
+  requestAnimationFrame(scrollStep);
 }
 
 export function ScrollToTop() {
@@ -24,13 +36,8 @@ export function ScrollToTop() {
     <button
       type="button"
       aria-label="Scroll to top"
-      onClick={() =>
-        window.scrollTo({
-          top: 0,
-          behavior: prefersReducedMotion() ? "auto" : "smooth",
-        })
-      }
-      className="rder-zinc-200 fixed right-5 bottom-5 z-50 cursor-pointer rounded-full border bg-white/90 px-4 py-2 text-sm font-medium text-zinc-900 shadow-sm backdrop-blur transition hover:scale-105 hover:bg-zinc-100 dark:border-white/55 dark:bg-white/10 dark:text-white dark:hover:bg-white/10"
+      onClick={() => smoothScrollToTop(600)}
+      className="fixed right-5 bottom-5 z-50 cursor-pointer rounded-full border border-zinc-200 bg-white/90 px-4 py-2 text-sm font-medium text-zinc-900 shadow-sm backdrop-blur transition hover:scale-105 hover:bg-zinc-100 dark:border-white/55 dark:bg-white/10 dark:text-white dark:hover:bg-white/10"
     >
       <ArrowUp className="h-6 w-4" />
     </button>

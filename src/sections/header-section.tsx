@@ -1,33 +1,53 @@
 "use client";
 
-import Link from "next/link";
 import { Container } from "@/components/container";
 import { useEffect, useMemo, useState } from "react";
 import { nav } from "@/const/nav.const";
+import { smoothScrollTo } from "@/utils/smooth-scroll-to.util";
 
 export function SiteHeader() {
-  const ids = useMemo(() => nav.map((n) => n.href.slice(1)), []);
+  const ids = useMemo(() => nav.map((n) => n.href.replace("#", "")), []);
   const [activeId, setActiveId] = useState<string>("top");
+  const headerHeight = 56;
 
   useEffect(() => {
-    const els = ids
+    const sections = ids
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
-    if (els.length === 0) return;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
-        const top = visible[0]?.target as HTMLElement | undefined;
-        if (top?.id) setActiveId(top.id);
-      },
-      { root: null, threshold: [0.2, 0.35, 0.5], rootMargin: "-10% 0px -70% 0px" },
-    );
+    if (!sections.length) return;
 
-    for (const el of els) io.observe(el);
-    return () => io.disconnect();
+    const handleScroll = () => {
+      let closestSection = sections[0];
+      let minDistance = Infinity;
+
+      sections.forEach((sec) => {
+        const rect = sec.getBoundingClientRect();
+        const distance = Math.abs(rect.top - headerHeight);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestSection = sec;
+        }
+      });
+
+      const scrollBottom = window.innerHeight + window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+
+      if (scrollBottom >= docHeight - 1) {
+        setActiveId(sections[sections.length - 1].id);
+      } else {
+        setActiveId(closestSection.id);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, [ids]);
 
   return (
@@ -35,26 +55,38 @@ export function SiteHeader() {
       <Container>
         <div className="flex h-14 items-center justify-between">
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => smoothScrollTo(0)}
             className="cursor-pointer text-sm font-semibold tracking-tight text-zinc-950 dark:text-white"
           >
             Roman Rudiy
           </button>
+
           <nav className="flex items-center gap-1 font-semibold">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={`/${item.href}`}
-                className={[
-                  "rounded-full px-3 py-2 text-sm transition",
-                  item.href.slice(1) === activeId
-                    ? "bg-zinc-950 text-white dark:bg-white dark:text-black"
-                    : "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white",
-                ].join(" ")}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {nav.map((item) => {
+              const id = item.href.replace("#", "");
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    const targetY =
+                      el.getBoundingClientRect().top + window.scrollY - headerHeight;
+                    smoothScrollTo(targetY);
+                  }}
+                  className={[
+                    "rounded-full px-3 py-2 text-sm transition",
+                    id === activeId
+                      ? "bg-zinc-950 text-white dark:bg-white dark:text-black"
+                      : "text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white",
+                  ].join(" ")}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
         </div>
       </Container>
