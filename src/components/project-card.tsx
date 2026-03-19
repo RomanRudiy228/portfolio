@@ -13,6 +13,8 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
           src={project.image}
           alt={project.name}
           fill
+          sizes="(min-width: 640px) 50vw, 100vw"
+          loading="eager"
           className="object-cover transition duration-500 group-hover:scale-105"
         />
 

@@ -28,6 +28,12 @@ export function HeroSection() {
             <h1 className="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
               {portfolio.name}
             </h1>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <p className="text-base text-pretty text-zinc-700 sm:text-lg dark:text-zinc-300">
+              {portfolio.title}
+            </p>
 
             <a
               href="/CV.pdf"
@@ -38,10 +44,6 @@ export function HeroSection() {
               Download CV
             </a>
           </div>
-
-          <p className="text-base text-pretty text-zinc-700 sm:text-lg dark:text-zinc-300">
-            {portfolio.title}
-          </p>
         </div>
 
         <div className="group overflow-hidden rounded-2xl">
