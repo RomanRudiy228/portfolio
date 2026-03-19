@@ -4,6 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/sections/header-section";
 import { SiteFooter } from "@/sections/footer-section";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({
           <SiteFooter />
         </div>
         <ScrollToTop />
+        <Analytics />
       </body>
     </html>
   );
