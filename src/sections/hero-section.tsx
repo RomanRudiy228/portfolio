@@ -51,7 +51,7 @@ export function HeroSection() {
             {[...portfolio.highlights, ...portfolio.highlights].map((h, idx) => (
               <div
                 key={`${h.label}-${idx}`}
-                className="flex w-[360px] shrink-0 items-center gap-3 rounded-2xl border border-zinc-200 bg-white/80 px-5 py-3.5 backdrop-blur-md dark:border-white/10 dark:bg-black/50"
+                className="flex w-[360px] shrink-0 items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-5 py-3.5 dark:border-white/10 dark:bg-black"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-full">
                   {h.label.includes("Commercial") && (
