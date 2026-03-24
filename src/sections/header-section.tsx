@@ -1,11 +1,13 @@
 "use client";
 
 import { Container } from "@/components/container";
+import { Moon, Sun } from "lucide-react";
 import { useMemo, useState } from "react";
 import { nav } from "@/const/nav.const";
 import { smoothScrollTo } from "@/utils/smooth-scroll-to.util";
 import { BurgerMenu } from "@/components/burger-menu";
 import { useActiveSection } from "../hooks/use-active-section";
+import { useTheme } from "next-themes";
 
 export function SiteHeader() {
   const ids = useMemo(() => nav.map((n) => n.href.replace("#", "")), []);
@@ -13,6 +15,12 @@ export function SiteHeader() {
 
   const activeId = useActiveSection(ids, headerHeight);
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const isDark = theme === "dark";
+
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
 
   return (
     <>
@@ -54,12 +62,26 @@ export function SiteHeader() {
               })}
             </nav>
 
-            <BurgerMenu
-              activeId={activeId}
-              headerHeight={headerHeight}
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-            />
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                suppressHydrationWarning
+                className="cursor-pointer relative inline-flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-300 text-zinc-800 transition-colors hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-900 dark:focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-black"
+              >
+                <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />          
+                <span className="sr-only">Toggle theme</span>
+              </button>
+
+              <BurgerMenu
+                activeId={activeId}
+                headerHeight={headerHeight}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+              />
+            </div>
           </div>
         </Container>
       </header>
