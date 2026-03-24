@@ -7,7 +7,7 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
   const href = project.links?.[0]?.href || "#";
 
   return (
-    <div className="group block overflow-hidden rounded-2xl border border-zinc-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:hover:border-white/20">
+    <div className="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white/80 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-white/10 dark:bg-black/50 dark:hover:border-white/20">
       <div className="relative h-52 w-full overflow-hidden">
         <Image
           src={project.image}

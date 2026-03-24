@@ -4,6 +4,8 @@ import "./globals.css";
 import { SiteHeader } from "@/sections/header-section";
 import { SiteFooter } from "@/sections/footer-section";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { ThemeProvider } from "@/components/theme-provider";
+import BlobCursor from "@/components/blob-cursor";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
@@ -28,16 +30,38 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-dvh bg-white text-zinc-950 antialiased dark:bg-black dark:text-white`}
       >
-        <SiteHeader />
-        <div className="flex min-h-[calc(100dvh-3.5rem)] flex-col">
-          <div className="flex-1">{children}</div>
-          <SiteFooter />
-        </div>
-        <ScrollToTop />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <BlobCursor
+            blobType="circle"
+            fillColor="#5227FF"
+            trailCount={3}
+            sizes={[60, 125, 75]}
+            innerSizes={[20, 35, 25]}
+            innerColor="rgba(255,255,255,0.8)"
+            opacities={[0.6, 0.6, 0.6]}
+            shadowColor="rgba(0,0,0,0.75)"
+            shadowBlur={50}
+            shadowOffsetX={0}
+            shadowOffsetY={4}
+            filterStdDeviation={30}
+            useFilter={true}
+            fastDuration={0.1}
+            slowDuration={0.5}
+            zIndex={0}
+          />
+          <div className="relative z-10">
+            <SiteHeader />
+            <div className="flex min-h-[calc(100dvh-3.5rem)] flex-col">
+              <div className="flex-1">{children}</div>
+              <SiteFooter />
+            </div>
+            <ScrollToTop />
+          </div>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

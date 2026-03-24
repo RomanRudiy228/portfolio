@@ -13,7 +13,7 @@ export function ProjectsSection() {
               <FolderGit2 className="h-5 w-5" aria-hidden="true" />
               Projects
             </h2>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            <p className="text-black-600 mt-1 text-sm dark:text-zinc-400">
               Commercial work and production-oriented contributions.
             </p>
           </div>

@@ -13,13 +13,14 @@ import {
   Send,
   Download,
 } from "lucide-react";
+import TextType from "@/components/text-type";
 
 export function HeroSection() {
   return (
     <section id="top" className="scroll-mt-20">
       <Reveal withScrollMargin className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
-          <p className="flex items-center gap-1 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+          <p className="text-black-600 flex items-center gap-1 text-sm font-medium dark:text-zinc-400">
             <MapPin className="h-4 w-4" aria-hidden="true" />
             {portfolio.location}
           </p>
@@ -31,9 +32,19 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="text-base text-pretty text-zinc-700 sm:text-lg dark:text-zinc-300">
-              {portfolio.title}
-            </p>
+            <TextType
+              className="text-black-600 text-base text-pretty sm:text-lg dark:text-zinc-300"
+              text={portfolio.title}
+              typingSpeed={65}
+              pauseDuration={3000}
+              showCursor
+              cursorCharacter="_"
+              deletingSpeed={75}
+              variableSpeedEnabled={false}
+              variableSpeedMin={60}
+              variableSpeedMax={120}
+              cursorBlinkDuration={0.5}
+            />
 
             <a
               href="/CV.pdf"
@@ -51,7 +62,7 @@ export function HeroSection() {
             {[...portfolio.highlights, ...portfolio.highlights].map((h, idx) => (
               <div
                 key={`${h.label}-${idx}`}
-                className="flex w-[360px] shrink-0 items-center gap-3 rounded-2xl border border-zinc-200 px-5 py-3.5 dark:border-white/10"
+                className="flex w-[360px] shrink-0 items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-5 py-3.5 dark:border-white/10 dark:bg-black"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-full">
                   {h.label.includes("Commercial") && (
@@ -91,7 +102,7 @@ export function HeroSection() {
           ) : null}
           {portfolio.contacts.linkedinUrl ? (
             <Link
-              className="flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              className="flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-white/15 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
               href={portfolio.contacts.linkedinUrl}
               target="_blank"
               rel="noreferrer"
@@ -102,7 +113,7 @@ export function HeroSection() {
           ) : null}
           {portfolio.contacts.telegramUrl ? (
             <Link
-              className="flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              className="flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-white/15 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
               href={portfolio.contacts.telegramUrl}
               target="_blank"
               rel="noreferrer"

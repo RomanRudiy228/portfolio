@@ -16,7 +16,7 @@ export function ExperienceSection() {
           {portfolio.experience.map((e) => (
             <div
               key={`${e.title}-${e.company}`}
-              className="rounded-2xl border border-zinc-200 p-6 text-base dark:border-white/10"
+              className="rounded-2xl border border-zinc-200 bg-white/80 p-6 text-base backdrop-blur-md dark:border-white/10 dark:bg-black/50"
             >
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                 <div>
