@@ -12,7 +12,7 @@ export function AboutSection() {
           About
         </h2>
 
-        <p className="mb-6 text-base leading-6 text-zinc-700 dark:text-zinc-300">
+        <p className="text-black-600 mb-6 text-base leading-6 dark:text-zinc-300">
           Hi! I&apos;m <span className="font-bold">Roman Rudiy</span>, a passionate Full
           Stack Developer with experience in JavaScript, TypeScript, React, Next.js,
           Node.js, and modern web architectures. I enjoy building scalable, maintainable,

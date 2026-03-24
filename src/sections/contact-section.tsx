@@ -13,7 +13,7 @@ export function ContactSection() {
 
         <div className="space-y-4">
           <div className="flex items-center gap-4">
-            <span className="w-16 shrink-0 text-sm font-medium tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+            <span className="w-16 shrink-0 text-sm font-medium tracking-wider text-zinc-800 uppercase dark:text-zinc-500">
               Email
             </span>
 
@@ -26,7 +26,7 @@ export function ContactSection() {
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="w-16 shrink-0 text-sm font-medium tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+            <span className="w-16 shrink-0 text-sm font-medium tracking-wider text-zinc-800 uppercase dark:text-zinc-500">
               Phone
             </span>
 

@@ -20,7 +20,7 @@ export function HeroSection() {
     <section id="top" className="scroll-mt-20">
       <Reveal withScrollMargin className="flex flex-col gap-6">
         <div className="flex flex-col gap-3">
-          <p className="flex items-center gap-1 text-sm font-medium text-zinc-600 dark:text-zinc-400">
+          <p className="text-black-600 flex items-center gap-1 text-sm font-medium dark:text-zinc-400">
             <MapPin className="h-4 w-4" aria-hidden="true" />
             {portfolio.location}
           </p>
@@ -33,7 +33,7 @@ export function HeroSection() {
 
           <div className="flex flex-wrap items-center justify-between gap-4">
             <TextType
-              className="text-base text-pretty text-zinc-700 sm:text-lg dark:text-zinc-300"
+              className="text-black-600 text-base text-pretty sm:text-lg dark:text-zinc-300"
               text={portfolio.title}
               typingSpeed={65}
               pauseDuration={3000}

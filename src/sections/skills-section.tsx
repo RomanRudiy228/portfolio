@@ -17,7 +17,7 @@ export function SkillsSection() {
               key={key}
               className="flex items-baseline gap-4 py-3 first:pt-0 last:pb-0"
             >
-              <span className="w-[100px] shrink-0 pt-0.5 text-sm font-medium tracking-[0.06em] text-zinc-500 uppercase dark:text-zinc-400">
+              <span className="w-[100px] shrink-0 pt-0.5 text-sm font-medium tracking-[0.06em] text-zinc-800 uppercase dark:text-zinc-400">
                 {label}
               </span>
 

@@ -36,13 +36,13 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <BlobCursor
             blobType="circle"
-            fillColor="#000000"
+            fillColor="#5227FF"
             trailCount={3}
             sizes={[60, 125, 75]}
             innerSizes={[20, 35, 25]}
-            innerColor="#fcf7f7"
+            innerColor="rgba(255,255,255,0.8)"
             opacities={[0.6, 0.6, 0.6]}
-            shadowColor="#f8f7f7"
+            shadowColor="rgba(0,0,0,0.75)"
             shadowBlur={50}
             shadowOffsetX={0}
             shadowOffsetY={4}
