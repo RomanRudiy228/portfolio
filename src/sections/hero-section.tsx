@@ -51,7 +51,7 @@ export function HeroSection() {
             {[...portfolio.highlights, ...portfolio.highlights].map((h, idx) => (
               <div
                 key={`${h.label}-${idx}`}
-                className="flex w-[360px] shrink-0 items-center gap-3 rounded-2xl border border-zinc-200 px-5 py-3.5 dark:border-white/10"
+                className="flex w-[360px] shrink-0 items-center gap-3 rounded-2xl border border-zinc-200 bg-white/80 px-5 py-3.5 backdrop-blur-md dark:border-white/10 dark:bg-black/50"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-full">
                   {h.label.includes("Commercial") && (
@@ -91,7 +91,7 @@ export function HeroSection() {
           ) : null}
           {portfolio.contacts.linkedinUrl ? (
             <Link
-              className="flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              className="flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-white/15 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
               href={portfolio.contacts.linkedinUrl}
               target="_blank"
               rel="noreferrer"
@@ -102,7 +102,7 @@ export function HeroSection() {
           ) : null}
           {portfolio.contacts.telegramUrl ? (
             <Link
-              className="flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+              className="flex items-center gap-1 rounded-full border border-zinc-200 bg-white px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 dark:border-white/15 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
               href={portfolio.contacts.telegramUrl}
               target="_blank"
               rel="noreferrer"

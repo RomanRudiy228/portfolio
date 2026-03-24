@@ -11,7 +11,7 @@ export function SkillsSection() {
           Skills
         </h2>
 
-        <div className="mt-6 flex flex-col divide-y divide-zinc-100 dark:divide-white/[0.06]">
+        <div className="mt-6 flex flex-col divide-y divide-zinc-100 dark:divide-white/6">
           {portfolio.categories.map(({ key, label }) => (
             <div
               key={key}
@@ -25,7 +25,7 @@ export function SkillsSection() {
                 {portfolio.skills[key].map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full border border-zinc-200 px-2.5 py-[3px] text-sm text-zinc-800 dark:border-white/10 dark:text-zinc-200"
+                    className="rounded-full border border-zinc-200 bg-white/80 px-2.5 py-[3px] text-sm text-zinc-800 backdrop-blur-md dark:border-white/10 dark:bg-black/50 dark:text-zinc-200"
                   >
                     {skill}
                   </span>

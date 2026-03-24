@@ -19,7 +19,7 @@ export function AboutSection() {
           and user-friendly web applications that solve real-world problems.
         </p>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="rounded-xl border border-zinc-200 p-5 transition-shadow duration-300 hover:shadow-lg dark:border-white/10">
+          <div className="rounded-xl border border-zinc-200 bg-white/80 p-5 backdrop-blur-md transition-shadow duration-300 hover:shadow-lg dark:border-white/10 dark:bg-black/50">
             <h3 className="mb-3 flex items-center gap-2 text-[16px] font-semibold">
               <Activity className="h-5 w-5" />
               My Approach
@@ -31,7 +31,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-zinc-200 p-5 transition-shadow duration-300 hover:shadow-lg dark:border-white/10">
+          <div className="rounded-xl border border-zinc-200 bg-white/80 p-5 backdrop-blur-md transition-shadow duration-300 hover:shadow-lg dark:border-white/10 dark:bg-black/50">
             <h3 className="mb-3 flex items-center gap-2 text-[16px] font-semibold">
               <BookOpen className="h-5 w-5" />
               Education
@@ -48,7 +48,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-zinc-200 p-5 transition-shadow duration-300 hover:shadow-lg dark:border-white/10">
+          <div className="rounded-xl border border-zinc-200 bg-white/80 p-5 backdrop-blur-md transition-shadow duration-300 hover:shadow-lg dark:border-white/10 dark:bg-black/50">
             <h3 className="mb-3 flex items-center gap-2 text-[16px] font-semibold">
               <Award className="h-5 w-5" />
               Courses
