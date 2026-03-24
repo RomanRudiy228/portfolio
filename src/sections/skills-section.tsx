@@ -11,7 +11,7 @@ export function SkillsSection() {
           Skills
         </h2>
 
-        <div className="mt-6 flex flex-col divide-y divide-zinc-100 dark:divide-white/6">
+        <div className="mt-6 flex flex-col divide-y divide-zinc-200 dark:divide-white/6">
           {portfolio.categories.map(({ key, label }) => (
             <div
               key={key}

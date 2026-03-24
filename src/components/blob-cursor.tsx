@@ -79,10 +79,7 @@ export default function BlobCursor({
   }, [handleMove]);
 
   return (
-    <div
-      className="pointer-events-none fixed inset-0 h-full w-full"
-      style={{ zIndex }}
-    >
+    <div className="pointer-events-none fixed inset-0 h-full w-full" style={{ zIndex }}>
       {useFilter && (
         <svg className="absolute h-0 w-0">
           <filter id={filterId}>

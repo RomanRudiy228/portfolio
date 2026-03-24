@@ -13,6 +13,7 @@ import {
   Send,
   Download,
 } from "lucide-react";
+import TextType from "@/components/text-type";
 
 export function HeroSection() {
   return (
@@ -31,9 +32,19 @@ export function HeroSection() {
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <p className="text-base text-pretty text-zinc-700 sm:text-lg dark:text-zinc-300">
-              {portfolio.title}
-            </p>
+            <TextType
+              className="text-base text-pretty text-zinc-700 sm:text-lg dark:text-zinc-300"
+              text={portfolio.title}
+              typingSpeed={65}
+              pauseDuration={3000}
+              showCursor
+              cursorCharacter="_"
+              deletingSpeed={75}
+              variableSpeedEnabled={false}
+              variableSpeedMin={60}
+              variableSpeedMax={120}
+              cursorBlinkDuration={0.5}
+            />
 
             <a
               href="/CV.pdf"
