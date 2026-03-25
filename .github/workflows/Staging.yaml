@@ -1,0 +1,118 @@
+name: CI (staging)
+
+on:
+  push:
+    branches:
+      - staging
+  pull_request:
+    branches:
+      - staging
+
+concurrency:
+  group: ci-staging-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Lint and optional tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run lint
+        run: yarn lint
+
+      - name: Run tests (if script exists)
+        shell: bash
+        run: |
+          if node -e "const s=require('./package.json').scripts||{}; process.exit(s.test ? 0 : 1)"; then
+            yarn test
+          else
+            echo "No test script in package.json, skipping tests."
+          fi
+
+  build:
+    name: Build app
+    runs-on: ubuntu-latest
+    needs: quality
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: yarn build
+
+  health-check:
+    name: Smoke health check
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build for runtime check
+        run: yarn build
+
+      - name: Start app
+        run: |
+          nohup yarn start --port 3000 > app.log 2>&1 &
+
+      - name: Wait for app and check homepage
+        shell: bash
+        run: |
+          for i in {1..30}; do
+            if curl -fsS http://127.0.0.1:3000 > /dev/null; then
+              echo "Health check passed."
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Health check failed. Last logs:"
+          tail -n 200 app.log
+          exit 1
+
+  semgrep:
+    name: Semgrep scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: p/ci
