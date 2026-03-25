@@ -116,3 +116,28 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         with:
           config: p/ci
+
+  deploy:
+    name: Deploy via SSH (production)
+    runs-on: ubuntu-latest
+    needs: [build, health-check, semgrep]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "${{ secrets.HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Copy deploy.sh to server
+        run: |
+          scp -i ~/.ssh/id_rsa -o IdentitiesOnly=yes deploy.sh ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/deploy.sh
+          ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes ${{ secrets.USERNAME }}@${{ secrets.HOST }} "chmod +x ~/deploy.sh"
+
+      - name: Run deploy script
+        run: |
+          ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'bash ~/deploy.sh main'
