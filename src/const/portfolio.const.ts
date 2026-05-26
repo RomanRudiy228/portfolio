@@ -84,6 +84,28 @@ export const portfolio = {
   ],
   projects: [
     {
+      name: "Car Configurator",
+      role: "Full Stack Developer",
+      image: "/images/konfigurator.png",
+      year: "2026",
+      type: "Live",
+      summary:
+        "Mazda-style vehicle configurator with 3D visualization for exterior and interior views, a multi-step flow for equipment, engine, paint, and options, plus live pricing and a summary screen.",
+      highlights: [
+        "Built a responsive catalog and step-by-step configuration UI with Next.js and Tailwind CSS.",
+        "Integrated 3D car and interior previews so users can review trim, color, and cabin choices in context.",
+        "Implemented dynamic price calculation and configuration state across trim, motor, and extras.",
+        "Modeled vehicle data and options in PostgreSQL with Prisma ORM.",
+      ],
+      stack: ["TypeScript", "Next.js", "Tailwind CSS", "PostgreSQL", "Prisma ORM"],
+      links: [
+        {
+          label: "Live",
+          href: "https://project-konfigurator.vercel.app/konfigurator",
+        },
+      ],
+    },
+    {
       name: "Alytic",
       role: "Full Stack Developer",
       image: "/images/alytic.png",
